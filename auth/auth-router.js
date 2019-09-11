@@ -45,20 +45,6 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.get('/logout', (req, res) => {
-    if (req.session) {
-        req.session.destroy(err => {
-            if (err) {
-                res.json({
-                    message: 'Failed to log out.'
-                })
-            } else {
-                res.logout();
-            }
-        })
-    }
-})
-
 function generateToken(user) {
     const payload = {
         sub: user.id,
